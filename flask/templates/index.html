@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh">
+<body>
+    <div class="login-container">
+        <h1>Seach students</h1>
+        <form action="/search_for_students" method="post">
+            <div class="form-group">
+                <label for="student_name">Student_name:</label>
+                <input type="text" id="student_name" name="student_name" required>
+            </div>
+            <div class="form-group">
+                <button type="submit">search_for</button>
+            </div>
+        </form>
+    </div>
+</body>
+<head>
+    <meta charset="UTF-8">
+    <title>{{ data.title }}</title>
+</head>
+<body>
+    <h1>欢迎, {{ data.user.name }}!</h1>
+    <p>你今年 {{ data.user.age }} 岁。</p>
+    <p>你现在在{{ data.user.lesson }} 班。</p>
+    <p>你现在在{{ data.user.grade }} 年级。</p>
+    {% if data.user.gender == 1  %}
+        <p>你性别是男。</p>
+    {% elif data.user.gender == 0  %}
+        <p>你性别是女。</p>
+    {% endif %}
+   {% if data.user.age < 14 %}
+        <p> 你还很年轻</p>
+    {% endif %}
+    <p>你喜欢的项目有:</p>
+        {% for item in data.Items %}
+            <li>{{item}}</li>
+        {% endfor %}
+</body>
+</html>
+
+
